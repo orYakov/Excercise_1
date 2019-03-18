@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Excercise_1
 {
-    public interface IMission
+    public interface IMission//
     {
         event EventHandler<double> OnCalculate;  // An Event of when a mission is activated
 
