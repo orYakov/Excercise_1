@@ -10,10 +10,10 @@ namespace Excercise_1
     {
         private string name;
         private string type = "Composed";
-        //private DelegateMis delMis;
         private List<DelegateMis> delMisList = new List<DelegateMis>();
         public event EventHandler<double> OnCalculate;
 
+        // constructor
         public ComposedMission(string name)
         {
             this.name = name;
@@ -29,11 +29,13 @@ namespace Excercise_1
             get { return type; }
         }
 
+        // a function that adds a delegate to the delegate-list (in functional-prog way)
         public ComposedMission Add(DelegateMis delMis)
         {
             delMisList.Add(delMis);
             return this;
         }
+        // calculates the value of a given parameter, according to the delegate
         public double Calculate(double val)
         {
             double res = val;
@@ -41,9 +43,9 @@ namespace Excercise_1
             {
                 res = mis(res);    
             }
+            // notify about the event
             OnCalculate?.Invoke(this, res);
             return res;
-            //for each res
         }
     }
 }

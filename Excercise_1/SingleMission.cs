@@ -14,6 +14,7 @@ namespace Excercise_1
         private DelegateMis delMis;
         public event EventHandler<double> OnCalculate;
 
+        // constructor
         public SingleMission(DelegateMis delMis, string name)
         {
             this.name = name;
@@ -31,10 +32,12 @@ namespace Excercise_1
         {
             get { return type; }
         }
+        // calculates the value of a given parameter, according to the delegate
         public double Calculate(double val)
         {
             double res;
             res = delMis(val);
+            // notify about the event
             OnCalculate?.Invoke(this, res);
             return res;
         }
